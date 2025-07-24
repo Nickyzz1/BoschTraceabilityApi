@@ -1,0 +1,6 @@
+@APIbosch_HostAddress = http://localhost:5189
+
+GET {{APIbosch_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
