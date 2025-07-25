@@ -1,0 +1,16 @@
+PART 
+- post /part -> criar uma peça
+- get /part --> pegar todas as peças
+- update /part --> para status
+- delete /part --> deletar uma peça
+
+STATION 
+- post /station --> criar estação
+- get /station --> pegar estações
+- update /station --> editar estação
+- delete /station --> deletar estação com cascade
+- sort --> ordem da etapa
+
+HISTORY
+- post / history
+- get /history

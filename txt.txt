@@ -1,0 +1,23 @@
+part {
+    id pk
+    cod unique
+    station enum(1,2,3) fk
+    status (em processamento, finalizada)
+}
+
+
+log {
+    id pk
+    datatime
+    responsable
+    action (origem e destinação)
+}
+
+station {
+    id pk
+    name
+    isactive
+}
+
+
+

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIbosch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+578f84035762b54dc8edc7c8dee0ccd915722dd9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d26e772800a12a43db07c54197435ca3f0fce137")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIbosch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIbosch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
