@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\siq7ct\\boschtraceabilityapi\\APIbosch\\APIbosch.csproj": {}
+    "C:\\Users\\siq7ct\\Desktop\\BoschTraceabilityApi\\APIbosch.csproj": {}
   },
   "projects": {
-    "C:\\Users\\siq7ct\\boschtraceabilityapi\\APIbosch\\APIbosch.csproj": {
+    "C:\\Users\\siq7ct\\Desktop\\BoschTraceabilityApi\\APIbosch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\siq7ct\\boschtraceabilityapi\\APIbosch\\APIbosch.csproj",
+        "projectUniqueName": "C:\\Users\\siq7ct\\Desktop\\BoschTraceabilityApi\\APIbosch.csproj",
         "projectName": "APIbosch",
-        "projectPath": "C:\\Users\\siq7ct\\boschtraceabilityapi\\APIbosch\\APIbosch.csproj",
+        "projectPath": "C:\\Users\\siq7ct\\Desktop\\BoschTraceabilityApi\\APIbosch.csproj",
         "packagesPath": "C:\\Users\\siq7ct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\siq7ct\\boschtraceabilityapi\\APIbosch\\obj\\",
+        "outputPath": "C:\\Users\\siq7ct\\Desktop\\BoschTraceabilityApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\siq7ct\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,7 +44,23 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.7, )"
             }
