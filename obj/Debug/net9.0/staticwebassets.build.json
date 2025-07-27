@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "HmtJ3PPAiXgIpgQCE75XHeC2HCpX1rgEPY9a1vj6H1E=",
+  "Source": "MyApi2",
+  "BasePath": "_content/MyApi2",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

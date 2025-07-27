@@ -1,10 +1,7 @@
-using BoschTraceabilityAPI.API.Configuration;
+using Microsoft.EntityFrameworkCore;
+using MyApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddAppServices(builder.Configuration);
-
-var app = builder.Build();
-app.MapControllers();
-app.Run();
+builder.Services.AddDbContext<BoschDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

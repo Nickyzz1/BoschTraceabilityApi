@@ -1,0 +1,21 @@
+part {
+    id
+    code
+    curStation {1,2,3,}
+    status
+}
+
+station {
+    id
+    titile
+    sort
+}
+
+moviment {
+    id
+    code fk
+    datatime
+    origin
+    destination
+    responsable
+}

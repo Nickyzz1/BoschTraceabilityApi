@@ -1,0 +1,4 @@
+dotnet ef database update --context BoschDbContext
+dotnet ef migrations add CreateInitialSchema --context BoschDbContext
+
+
