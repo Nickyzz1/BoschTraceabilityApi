@@ -19,6 +19,9 @@ builder.Services.AddScoped<PartService>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
 builder.Services.AddScoped<StationService>();
 
+builder.Services.AddScoped<IMovimentRepository, MovimentRepository>();
+builder.Services.AddScoped<MovimentService>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();

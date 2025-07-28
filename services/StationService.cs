@@ -50,7 +50,6 @@ namespace MyApi.Services {
             if (station == null)
                 return (false, "Estação não encontrada.");
 
-            // (opcional) validar duplicidade aqui também
             station.Title = dto.Title;
             station.Sort = dto.Sort;
 

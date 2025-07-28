@@ -59,3 +59,7 @@ Copiar
 Editar
 .exit
 Quer que eu monte um mini roteiro de comandos pra você ir testando?
+
+crud station ok
+
+crud part ok

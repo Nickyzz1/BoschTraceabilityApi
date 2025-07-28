@@ -11,7 +11,6 @@ namespace MyApi.Interfaces
         Task UpdateAsync(Part part);
         Task DeleteAsync(int id);
         Task<bool> ExistsByCode(string code);
-
     }
     
 }

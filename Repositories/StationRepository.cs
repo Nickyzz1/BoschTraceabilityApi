@@ -49,8 +49,14 @@ namespace MyApi.Repositories {
         {
             return await _context.Stations.AnyAsync(s => s.Sort == sort);
         }
-
+        public async Task<int> GetMaxSortAsync()
+        {
+            return await _context.Stations.MaxAsync(s => s.Sort);
+        }
+        public async Task<Station> GetLastStationAsync()
+        {
+            return await _context.Stations.OrderByDescending(s => s.Sort).FirstOrDefaultAsync();
+        }
     }
-
 
 }

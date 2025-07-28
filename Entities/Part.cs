@@ -7,13 +7,11 @@ namespace MyApi.Entities
         public  int Id { get; set; }
         public  string Code { get; set; }
         
-        // Relação com a estação atual
         public  int? CurStationId { get; set; }
-        public  Station CurStation { get; set; }
+        public  Station? CurStation { get; set; }
 
         public required string Status { get; set; } = string.Empty;
-
-        // Histórico de movimentações
+        // historic
         public List<Moviment>? Moviments { get; set; } 
     }
 }

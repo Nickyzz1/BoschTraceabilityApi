@@ -48,9 +48,10 @@ namespace MyApi.Repositories {
             }
         }
 
-        public Task<bool> ExistsByCode(string code)
+        public async Task<bool> ExistsByCode(string code)
         {
-            throw new NotImplementedException();
+            return await _context.Parts.AnyAsync(p => p.Code == code);
         }
+
     }
 }

@@ -11,5 +11,7 @@ namespace MyApi.Interfaces {
         Task DeleteAsync(Station station);
         Task<bool> ExistsByTitleAsync(string title);
         Task<bool> ExistsBySortAsync(int sort);
+        Task<int> GetMaxSortAsync();
+        Task<Station> GetLastStationAsync();
     }
 }

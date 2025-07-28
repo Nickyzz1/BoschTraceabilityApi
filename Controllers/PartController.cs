@@ -7,7 +7,7 @@ using MyApi.Services;
 namespace MyApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/Part")]
+    [Route("api/v1/part")]
     public class PartController : ControllerBase
     {
         // criando vars para acesso aos repositories que conversão com o banco de dados
@@ -27,13 +27,40 @@ namespace MyApi.Controllers
             var parts = await _repository.GetAllAsync();
             return Ok(parts);
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var part = await _partService.GetByIdAsync(id);
+            if (part == null)
+                return NotFound("Peça não encontrada.");
+            return Ok(part);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PartCreateDto dto)
         {
             var (ok, error) = await _partService.ValidarECriarAsync(dto);
-            if (!ok) return BadRequest(error);
-            return Ok();
+            return ok ? Ok("Criado com sucesso.") : BadRequest(error);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] PartCreateDto dto)
+        {
+            var (ok, error) = await _partService.AtualizarAsync(id, dto);
+            return ok ? Ok("Atualizado com sucesso.") : NotFound(error);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var (ok, error) = await _partService.DeletarAsync(id);
+            return ok ? Ok("Removido com sucesso.") : NotFound(error);
+        }
+        // [HttpPost("moviment")]
+        // public async Task<IActionResult> Movimentar([FromBody] MovimentCreateDto dto)
+        // {
+        //     var (ok, error) = await _partService.ValidarEMovimentarAsync(dto);
+        //     return ok ? Ok("Movimentação realizada.") : BadRequest(error);
+        // }
     }
 }
