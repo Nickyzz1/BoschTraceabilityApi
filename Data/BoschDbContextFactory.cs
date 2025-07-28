@@ -9,7 +9,8 @@ namespace MyApi.Data
         public BoschDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<BoschDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=boschDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            // optionsBuilder.UseSqlServer("Server=localhost;Database=boschDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlite("Data Source=boschDb.db");
 
             return new BoschDbContext(optionsBuilder.Options);
         }

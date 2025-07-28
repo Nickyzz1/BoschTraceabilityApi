@@ -1,4 +1,5 @@
-dotnet ef database update --context BoschDbContext
-dotnet ef migrations add CreateInitialSchema --context BoschDbContext
+dotnet ef database update --context BoschDbContext //gera uma nova migration com base nas diferenças entre suas classes de entidade e o banco de dados atual.
+dotnet ef migrations add CreateInitialSchema --context BoschDbContext //Mesma coisa que o de cima, mas explicitando qual contexto usar, caso tenha mais de um DbContext no projeto.
+dotnet ef migrations add InitialCreate //Esse comando aplica as migrations ao banco de dados real.
 
 

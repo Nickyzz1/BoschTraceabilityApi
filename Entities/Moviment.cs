@@ -7,13 +7,13 @@ namespace MyApi.Entities
         public int Id { get; set; }
 
         // FK para Part
-        public int PartId { get; set; }
-        public Part Part { get; set; }
+        public  int PartId { get; set; }
+        public  Part Part { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public  DateTime DateTime { get; set; }
 
-        public string Origin { get; set; }
-        public string Destination { get; set; }
-        public string Responsable { get; set; }
+        public required string Origin { get; set; } = string.Empty;
+        public required string Destination { get; set; } = string.Empty;
+        public required string Responsable { get; set; } = string.Empty;
     }
 }

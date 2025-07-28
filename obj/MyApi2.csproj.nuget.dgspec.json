@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Área de Trabalho\\MyApi2\\MyApi2.csproj": {}
+    "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Área de Trabalho\\MyApi2\\MyApi2.csproj": {
+    "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\MyApi2\\MyApi2.csproj",
+        "projectUniqueName": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj",
         "projectName": "MyApi2",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\MyApi2\\MyApi2.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Área de Trabalho\\MyApi2\\obj\\",
+        "projectPath": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj",
+        "packagesPath": "C:\\Users\\siq7ct\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\siq7ct\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -48,11 +48,19 @@
               "target": "Package",
               "version": "[9.0.7, )"
             },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.7, )"
             },
@@ -82,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

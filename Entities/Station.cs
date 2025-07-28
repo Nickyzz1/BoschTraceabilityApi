@@ -4,11 +4,11 @@ namespace MyApi.Entities
 {
     public class Station
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public  int Id { get; set; }
+        public required string Title { get; set; } = string.Empty;
         public int Sort { get; set; }
 
         // Partes que estão atualmente nesta estação
-        public List<Part> Parts { get; set; }
+        public required List<Part> Parts { get; set; } = new List<Part>();
     }
 }
