@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace MyApi2.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateInitialSchema : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,6 +68,16 @@ namespace MyApi2.Migrations
                         principalTable: "Parts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Stations",
+                columns: new[] { "Id", "Sort", "Title" },
+                values: new object[,]
+                {
+                    { 1, 1, "Estação Inicial" },
+                    { 2, 2, "Montagem" },
+                    { 3, 3, "Inspeção" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,8 +12,8 @@ using MyApi.Data;
 namespace MyApi2.Migrations
 {
     [DbContext(typeof(BoschDbContext))]
-    [Migration("20250728120509_CreateInitialSchema")]
-    partial class CreateInitialSchema
+    [Migration("20250728170216_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,6 +102,26 @@ namespace MyApi2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Sort = 1,
+                            Title = "Estação Inicial"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Sort = 2,
+                            Title = "Montagem"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Sort = 3,
+                            Title = "Inspeção"
+                        });
                 });
 
             modelBuilder.Entity("MyApi.Entities.Moviment", b =>

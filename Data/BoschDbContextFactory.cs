@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using MyApi.Data;
+using Npgsql;
 
 namespace MyApi.Data
 {
@@ -9,8 +10,11 @@ namespace MyApi.Data
         public BoschDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<BoschDbContext>();
-            // optionsBuilder.UseSqlServer("Server=localhost;Database=boschDb;Trusted_Connection=True;TrustServerCertificate=True;");
-            optionsBuilder.UseSqlite("Data Source=boschDb.db");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=boschDb;Trusted_Connection=True;TrustServerCertificate=True;");
+
+            // optionsBuilder.UseSqlite("Data Source=BoschDb.db");
+            // optionsBuilder.UseNpgsql("Host=localhost;Database=boschDb;Username=root;Password=root");
+
 
             return new BoschDbContext(optionsBuilder.Options);
         }

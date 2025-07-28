@@ -1,4 +1,3 @@
-// BoschDbContext.cs
 using Microsoft.EntityFrameworkCore;
 using MyApi.Entities; // ou o caminho correto para sua classe Part
 
@@ -14,5 +13,17 @@ namespace MyApi.Data
         public DbSet<Part> Parts { get; set; }
         public DbSet<Station> Stations { get; set; }
         public DbSet<Moviment> Moviments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Seeding de estações
+            modelBuilder.Entity<Station>().HasData(
+                new Station { Id = 1, Title = "Estação Inicial", Sort = 1 },
+                new Station { Id = 2, Title = "Montagem", Sort = 2 },
+                new Station { Id = 3, Title = "Inspeção", Sort = 3 }
+            );
+        }
     }
 }
