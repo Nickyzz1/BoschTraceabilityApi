@@ -55,6 +55,10 @@ namespace MyApi.Services {
             var station = await _repository.GetByIdAsync(id);
             if (station == null)
                 return (false, "Estação não encontrada.");
+            var orderExist = await _repository.GetByOrder(dto.Sort);
+
+            if(orderExist != null)
+                return (false, "Ordem já usada");
 
             station.Title = dto.Title;
             station.Sort = dto.Sort;

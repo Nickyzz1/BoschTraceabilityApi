@@ -13,5 +13,7 @@ namespace MyApi.Interfaces {
         Task<bool> ExistsBySortAsync(int sort);
         Task<int> GetMaxSortAsync();
         Task<Station> GetLastStationAsync();
+
+        Task<Station> GetByOrder(int sort);
     }
 }

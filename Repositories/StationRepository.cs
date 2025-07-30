@@ -22,6 +22,10 @@ namespace MyApi.Repositories {
         {
             return await _context.Stations.FindAsync(id);
         }
+        public async Task<Station?> GetByOrder(int sort)
+        {
+            return await _context.Stations.FirstOrDefaultAsync(s => s.Sort == sort);
+        }
 
         public async Task AddAsync(Station station)
         {
