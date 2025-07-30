@@ -35,6 +35,19 @@ namespace MyApi.Controllers
                 return NotFound("Peça não encontrada.");
             return Ok(part);
         }
+
+     
+        [HttpGet("code/{code}")]
+        public async Task<IActionResult> GetByCode(string code)
+        {
+            var part = await _partService.GetByCode(code);
+            if (part == null)
+                return NotFound("Peça não encontrada.");
+
+            return Ok(part);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PartCreateDto dto)
         {

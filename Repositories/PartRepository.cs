@@ -48,10 +48,11 @@ namespace MyApi.Repositories {
             }
         }
 
-        public async Task<bool> ExistsByCode(string code)
+        public async Task<Part?> GetByCode(string code)
         {
-            return await _context.Parts.AnyAsync(p => p.Code == code);
+            return await _context.Parts.FirstOrDefaultAsync(p => p.Code == code);
         }
+
 
     }
 }

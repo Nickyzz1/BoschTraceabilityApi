@@ -16,7 +16,7 @@ namespace MyApi.Services {
 
         public async Task<(bool ok, string? error, Part? part)> ValidarECriarAsync(PartCreateDto dto)
         {
-            if (await _repository.ExistsByCode(dto.Code))
+            if (await _repository.GetByCode(dto.Code) == null)
                 return (false, "Já existe uma peça com esse código.", null);
 
             var station = await _stationRepository.GetByIdAsync(dto.CurStationId);
@@ -33,6 +33,12 @@ namespace MyApi.Services {
             await _repository.AddAsync(part);
             return (true, null, part);
         }
+
+        public async Task<Part?> GetByCode(string code)
+        {
+            return await _repository.GetByCode(code);
+        }
+
 
         public async Task<IEnumerable<Part>> GetAllAsync()
         {

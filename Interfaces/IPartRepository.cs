@@ -10,7 +10,7 @@ namespace MyApi.Interfaces
         Task AddAsync(Part part);
         Task UpdateAsync(Part part);
         Task DeleteAsync(int id);
-        Task<bool> ExistsByCode(string code);
+        Task<Part?> GetByCode(string code);
     }
     
 }

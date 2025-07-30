@@ -573,3 +573,6 @@ C:\projetoBDO\BoschTraceabilityApi\obj\Debug\net9.0\ref\MyApi2.dll
 C:\projetoBDO\BoschTraceabilityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\projetoBDO\BoschTraceabilityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\projetoBDO\BoschTraceabilityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\siq7ct\Desktop\boschtraceabilityapi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\siq7ct\Desktop\boschtraceabilityapi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\siq7ct\Desktop\boschtraceabilityapi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
