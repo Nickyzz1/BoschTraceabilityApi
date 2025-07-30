@@ -62,6 +62,16 @@ namespace MyApi.Services {
             return (true, null);
         }
 
+        public async Task<(bool ok, string? error)> AtualizarStatusAsync(int id, string novoStatus)
+        {
+            var part = await _repository.GetByIdAsync(id);
+            if (part == null)
+                return (false, "Peça não encontrada.");
+
+            part.Status = novoStatus;
+            await _repository.UpdateAsync(part);
+            return (true, null);
+        }
 
         public async Task<(bool ok, string? error)> DeletarAsync(int id)
         {
