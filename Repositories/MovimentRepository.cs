@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MyApi.Data;
 using MyApi.Entities;
 using MyApi.Interfaces;
@@ -18,6 +19,11 @@ namespace MyApi.Repositories
         {
             _context.Moviments.Add(moviment);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Moviment>> GetAllAsync()
+        {
+            return await _context.Moviments.ToListAsync();
         }
     }
 }

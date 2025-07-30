@@ -19,6 +19,12 @@ namespace MyApi.Services {
             return await _repository.GetAllAsync();
         }
 
+         public async Task<int> GetMaxStation()
+        {
+            return await _repository.GetMaxSortAsync();
+        }
+
+
         public async Task<Station?> GetByIdAsync(int id)
         {
             return await _repository.GetByIdAsync(id);

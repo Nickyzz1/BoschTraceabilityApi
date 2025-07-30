@@ -3,7 +3,7 @@ using MyApi.Interfaces;
 using MyApi.DTO; 
 namespace MyApi.Services {
     
-    public class PartService
+    public class PartService 
     {
         private readonly IPartRepository _repository;
         private readonly IStationRepository _stationRepository;
@@ -14,14 +14,14 @@ namespace MyApi.Services {
             _stationRepository = stationRepo;
         }
 
-        public async Task<(bool ok, string? error)> ValidarECriarAsync(PartCreateDto dto)
+        public async Task<(bool ok, string? error, Part? part)> ValidarECriarAsync(PartCreateDto dto)
         {
             if (await _repository.ExistsByCode(dto.Code))
-                return (false, "Já existe uma peça com esse código.");
+                return (false, "Já existe uma peça com esse código.", null);
 
             var station = await _stationRepository.GetByIdAsync(dto.CurStationId);
             if (station == null)
-                return (false, "Peça não encontrada.");
+                return (false, "Peça não encontrada.", null);
 
             var part = new Part
             {
@@ -31,7 +31,7 @@ namespace MyApi.Services {
             };
 
             await _repository.AddAsync(part);
-            return (true, null);
+            return (true, null, part);
         }
 
         public async Task<IEnumerable<Part>> GetAllAsync()

@@ -12,8 +12,8 @@ namespace MyApi.Entities
 
         public  DateTime DateTime { get; set; }
 
-        public required string Origin { get; set; } = string.Empty;
-        public required string Destination { get; set; } = string.Empty;
+        public required int Origin { get; set; }
+        public required int Destination { get; set; }
         public required string Responsable { get; set; } = string.Empty;
     }
 }

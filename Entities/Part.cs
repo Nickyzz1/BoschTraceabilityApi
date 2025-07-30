@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace MyApi.Entities
 {
@@ -8,7 +9,8 @@ namespace MyApi.Entities
         public  string Code { get; set; }
         
         public  int? CurStationId { get; set; }
-        public  Station? CurStation { get; set; }
+        [JsonIgnore]  
+        public Station? CurStation { get; set; }
 
         public required string Status { get; set; } = string.Empty;
         // historic

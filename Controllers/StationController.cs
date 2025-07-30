@@ -34,6 +34,12 @@ namespace MyApi.Controllers {
                 return NotFound("Estação não encontrada.");
             return Ok(station);
         }
+         [HttpGet("max")]
+        public async Task<IActionResult> GetMaxx(int id)
+        {
+            var stations = await _service.GetMaxStation();
+            return Ok(stations);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] StationCreateDto dto)

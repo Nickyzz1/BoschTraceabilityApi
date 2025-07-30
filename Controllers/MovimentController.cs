@@ -22,5 +22,12 @@ namespace MyApi.Controllers
             var (ok, error) = await _movimentService.CriarMovimentacaoAsync(dto);
             return ok ? Ok("Movimentação realizada com sucesso.") : BadRequest(error);
         }
+
+        [HttpGet]
+         public async Task<IActionResult> GetAll()
+        {
+            var stations = await _movimentService.GetAllAsync();
+            return Ok(stations);
+        }
     }
 }

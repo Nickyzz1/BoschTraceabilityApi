@@ -35,13 +35,16 @@ namespace MyApi.Controllers
                 return NotFound("Peça não encontrada.");
             return Ok(part);
         }
-
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PartCreateDto dto)
         {
-            var (ok, error) = await _partService.ValidarECriarAsync(dto);
-            return ok ? Ok("Criado com sucesso.") : BadRequest(error);
+            var (ok, error, part) = await _partService.ValidarECriarAsync(dto);
+            if (ok)
+                return Ok(part);  // retorna o objeto criado, não só string
+            else
+                return BadRequest(error);
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] PartCreateDto dto)
