@@ -20,7 +20,7 @@ namespace MyApi.Controllers
         public async Task<IActionResult> Post([FromBody] MovimentCreateDto dto)
         {
             var (ok, error) = await _movimentService.CriarMovimentacaoAsync(dto);
-            return ok ? Ok("Movimentação realizada com sucesso.") : BadRequest(error);
+            return ok ? Ok(new { message = "Movimentação realizada com sucesso." }) : NotFound(new { error });
         }
 
         [HttpGet]

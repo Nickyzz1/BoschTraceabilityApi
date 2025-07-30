@@ -44,19 +44,18 @@ namespace MyApi.Services {
             return await _repository.GetByIdAsync(id);
         }
 
-        public async Task<(bool ok, string? error)> AtualizarAsync(int id, PartCreateDto dto)
+        public async Task<(bool ok, string? error)> AtualizarAsync(int id, PartUpdateDto dto)
         {
             var part = await _repository.GetByIdAsync(id);
             if (part == null)
                 return (false, "Peça não encontrada.");
 
-            
-            part.Code = dto.Code;
-            part.Status = dto.Status;
+            part.Code = dto.Code;  // atualiza o código da peça
 
             await _repository.UpdateAsync(part);
             return (true, null);
         }
+
 
         public async Task<(bool ok, string? error)> DeletarAsync(int id)
         {

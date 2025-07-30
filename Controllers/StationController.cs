@@ -45,21 +45,21 @@ namespace MyApi.Controllers {
         public async Task<IActionResult> Post([FromBody] StationCreateDto dto)
         {
             var (ok, error) = await _service.ValidarECriarAsync(dto);
-            return ok ? Ok("Criado com sucesso.") : BadRequest(error);
+            return ok ? Ok(new { message = "Criado com sucesso." }) : NotFound(new { error });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] StationCreateDto dto)
         {
             var (ok, error) = await _service.AtualizarAsync(id, dto);
-            return ok ? Ok("Atualizado com sucesso.") : NotFound(error);
+            return ok ? Ok(new { message = "Atualizado com sucesso." }) : NotFound(new { error });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var (ok, error) = await _service.DeletarAsync(id);
-            return ok ? Ok("Removido com sucesso.") : NotFound(error);
+            return ok ? Ok(new { message = "Removido com sucesso." }) : NotFound(new { error });
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MyApi.DTO {
         public required string Code { get; set; }
 
         [Required(ErrorMessage = "O status é obrigatório.")]
-         [JsonPropertyName("status")]
+        [JsonPropertyName("status")]
         public required string Status { get; set; }
         [JsonPropertyName("curStationId")]
         public required int CurStationId { get; set; }

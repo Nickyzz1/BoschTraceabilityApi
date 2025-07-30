@@ -47,17 +47,17 @@ namespace MyApi.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] PartCreateDto dto)
+        public async Task<IActionResult> Put(int id, [FromBody] PartUpdateDto dto)
         {
             var (ok, error) = await _partService.AtualizarAsync(id, dto);
-            return ok ? Ok("Atualizado com sucesso.") : NotFound(error);
+            return ok ? Ok(new { message = "Atualizado com sucesso." }) : NotFound(new { error });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var (ok, error) = await _partService.DeletarAsync(id);
-            return ok ? Ok("Removido com sucesso.") : NotFound(error);
+            return ok ? Ok(new { message = "Removico com sucesso." }) : NotFound(new { error });
         }
         // [HttpPost("moviment")]
         // public async Task<IActionResult> Movimentar([FromBody] MovimentCreateDto dto)
