@@ -6612,19 +6612,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\siq7ct\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projetoBDO\\BoschTraceabilityApi\\MyApi2.csproj",
+      "projectUniqueName": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj",
       "projectName": "MyApi2",
-      "projectPath": "C:\\projetoBDO\\BoschTraceabilityApi\\MyApi2.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\projetoBDO\\BoschTraceabilityApi\\obj\\",
+      "projectPath": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\MyApi2.csproj",
+      "packagesPath": "C:\\Users\\siq7ct\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\siq7ct\\Desktop\\boschtraceabilityapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\siq7ct\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -6648,7 +6648,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -6732,7 +6732,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
