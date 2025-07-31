@@ -104,7 +104,7 @@ Cobertura para:
 ### Backend
 
 ```bash
-cd Project
+cd BoschTraceabilityApi
 # Cria banco de dados automaticamente com EF
 dotnet ef database update
 # Roda a API
@@ -114,7 +114,7 @@ dotnet run
 ### Frontend
 
 ```bash
-cd frontend
+cd tailwindAngular
 npm install
 ng serve
 ```
@@ -132,6 +132,6 @@ ng serve
 
 ## \:technologist: Desenvolvido por Ni (Nicolle)
 
-Frontend dev apaixonada por design, realismo e esforço. Esse projeto é mais uma etapa no seu caminho pra se tornar uma dev front-end full stack de respeito!
+Frontend dev apaixonada por design, realismo e esforço. Esse projeto é mais uma etapa no seu caminho pra se tornar uma dev front-end full stack de respeito kaka.
 
 > "Esforço é o que te leva quando o talento vacila."
