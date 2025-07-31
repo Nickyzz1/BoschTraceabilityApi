@@ -16,8 +16,9 @@ namespace MyApi.Services {
 
         public async Task<(bool ok, string? error, Part? part)> ValidarECriarAsync(PartCreateDto dto)
         {
-            if (await _repository.GetByCode(dto.Code) == null)
+            if (await _repository.GetByCode(dto.Code) != null)
                 return (false, "Já existe uma peça com esse código.", null);
+            
 
             var station = await _stationRepository.GetByIdAsync(dto.CurStationId);
             if (station == null)

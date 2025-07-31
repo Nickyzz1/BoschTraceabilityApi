@@ -24,6 +24,15 @@ namespace MyApi.Data
                 new Station { Id = 2, Title = "Montagem", Sort = 2 },
                 new Station { Id = 3, Title = "Inspeção", Sort = 3 }
             );
+
+            base.OnModelCreating(modelBuilder);
+
+            // Configuração de delete em cascata
+            modelBuilder.Entity<Part>()
+            .HasOne(p => p.CurStation)
+            .WithMany(s => s.Parts)
+            .HasForeignKey(p => p.CurStationId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

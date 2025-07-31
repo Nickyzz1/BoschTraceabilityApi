@@ -57,7 +57,7 @@ namespace MyApi.Services {
                 return (false, "Estação não encontrada.");
             var orderExist = await _repository.GetByOrder(dto.Sort);
 
-            if(orderExist != null)
+            if(orderExist != null && orderExist.Id != id)
                 return (false, "Ordem já usada");
 
             station.Title = dto.Title;
