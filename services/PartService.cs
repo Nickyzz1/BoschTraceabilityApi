@@ -57,7 +57,7 @@ namespace MyApi.Services {
             if (part == null)
                 return (false, "Peça não encontrada.");
 
-            part.Code = dto.Code;  // atualiza o código da peça
+            part.Code = dto.Code;  
 
             await _repository.UpdateAsync(part);
             return (true, null);

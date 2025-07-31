@@ -10,8 +10,6 @@ using System;
 
 public class MovimentServiceTests
 {
-    //Registro de movimentações válidas e rejeição de inválidas.
-
     // Validação da ordem das estações com movimento
     [Fact]
     public async Task CriarMovimentacaoAsync_ValidMoviment_RegistersSuccessfully()
@@ -46,18 +44,16 @@ public class MovimentServiceTests
         Assert.True(result.ok);
         movimentRepo.Verify(m => m.AddAsync(It.IsAny<Moviment>()), Times.Once);
     }
-    //Registro de movimentações válidas e rejeição de inválidas.
+    
 
     // Validação da ordem das estações com movimento
     [Fact]
     public async Task CriarMovimentacaoAsync_InvalidDestinationSort_ReturnsError()
     {
-        // Arrange
+        
         var part = new Part { Id = 1, CurStationId = 1, Status = "Em processamento" };
         var atualStation = new Station { Id = 1, Sort = 1, Title = "Estação A" };
         var wrongStation = new Station { Id = 3, Sort = 4, Title = "Estação B" }; 
-       
-
 
         var partRepo = new Mock<IPartRepository>();
         var stationRepo = new Mock<IStationRepository>();

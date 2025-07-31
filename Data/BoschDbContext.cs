@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MyApi.Entities; // ou o caminho correto para sua classe Part
+using MyApi.Entities;
 
 namespace MyApi.Data
 {
@@ -27,7 +27,7 @@ namespace MyApi.Data
 
             base.OnModelCreating(modelBuilder);
 
-            // Configuração de delete em cascata
+            // delete em cascata
             modelBuilder.Entity<Part>()
             .HasOne(p => p.CurStation)
             .WithMany(s => s.Parts)

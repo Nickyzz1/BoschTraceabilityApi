@@ -53,7 +53,7 @@ namespace MyApi.Controllers
         {
             var (ok, error, part) = await _partService.ValidarECriarAsync(dto);
             if (ok)
-                return Ok(part);  // retorna o objeto criado, não só string
+                return Ok(part); 
             else
                 return BadRequest(error);
         }
