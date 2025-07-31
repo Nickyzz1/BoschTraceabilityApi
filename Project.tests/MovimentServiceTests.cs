@@ -1,53 +1,87 @@
-﻿// using Xunit;
-// using Moq;
-// using System.Threading.Tasks;
-// using System.Collections.Generic;
-// using MyApi.Entities;
-// using MyApi.Repositories;
-// using MyApi.Services;
-// using MyApi.Interfaces;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Moq;
+using Xunit;
+using MyApi.DTO;
+using MyApi.Entities;
+using MyApi.Interfaces;
+using MyApi.Services;
+using System;
 
-// public class MovimentServiceTests
-// {
-//     private readonly MovimentService _movimentService;
-//     private readonly Mock<IMovimentRepository> _mockRepo;
+public class MovimentServiceTests
+{
+    //Registro de movimentações válidas e rejeição de inválidas.
 
-//     public MovimentServiceTests()
-//     {
-//         _mockRepo = new Mock<IMovimentRepository>();
-//         _movimentService = new MovimentService(_mockRepo.Object);
-//     }
+    // Validação da ordem das estações com movimento
+    [Fact]
+    public async Task CriarMovimentacaoAsync_ValidMoviment_RegistersSuccessfully()
+    {
+        // Arrange
+        var part = new Part { Id = 1, CurStationId = 1, Status = "Em processamento" };
+        var atualStation = new Station { Id = 1, Sort = 1, Title = "Estação A" };
+        var nextStation = new Station { Id = 2, Sort = 2, Title = "Estação B" };
 
-//     [Fact]
-//     public async Task RegisterMoviment_ValidMoviment_Succeeds()
-//     {
-//         var moviment = new Moviment { PartId = 1, StationId = 2 };
+        var partRepo = new Mock<IPartRepository>();
+        var stationRepo = new Mock<IStationRepository>();
+        var movimentRepo = new Mock<IMovimentRepository>();
 
-//         _mockRepo.Setup(r => r.RegisterAsync(moviment)).Returns(Task.CompletedTask);
+        partRepo.Setup(r => r.GetByIdAsync(part.Id)).ReturnsAsync(part);
+        stationRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(atualStation);
+        stationRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync(nextStation);
+        stationRepo.Setup(r => r.GetMaxSortAsync()).ReturnsAsync(5);
 
-//         await _movimentService.RegisterMovimentAsync(moviment);
+        var service = new MovimentService(partRepo.Object, stationRepo.Object, movimentRepo.Object);
 
-//         _mockRepo.Verify(r => r.RegisterAsync(moviment), Times.Once);
-//     }
+        var dto = new MovimentCreateDto
+        {
+            PartId = 1,
+            DestinationStationId = 2,
+            Responsable = "Ni"
+        };
 
-//     [Fact]
-//     public async Task RegisterMoviment_InvalidStation_ThrowsException()
-//     {
-//         var moviment = new Moviment { PartId = 1, StationId = -1 }; // estação inválida
+        // Act
+        var result = await service.CriarMovimentacaoAsync(dto);
 
-//         await Assert.ThrowsAsync<ArgumentException>(() => _movimentService.RegisterMovimentAsync(moviment));
-//     }
+        // Assert
+        Assert.True(result.ok);
+        movimentRepo.Verify(m => m.AddAsync(It.IsAny<Moviment>()), Times.Once);
+    }
+    //Registro de movimentações válidas e rejeição de inválidas.
 
-//     [Fact]
-//     public async Task UpdatePartStatus_ValidUpdate_Succeeds()
-//     {
-//         var partId = 1;
-//         var newStatus = "Concluído";
+    // Validação da ordem das estações com movimento
+    [Fact]
+    public async Task CriarMovimentacaoAsync_InvalidDestinationSort_ReturnsError()
+    {
+        // Arrange
+        var part = new Part { Id = 1, CurStationId = 1, Status = "Em processamento" };
+        var atualStation = new Station { Id = 1, Sort = 1, Title = "Estação A" };
+        var wrongStation = new Station { Id = 3, Sort = 4, Title = "Estação B" }; 
+       
 
-//         _mockRepo.Setup(r => r.UpdatePartStatusAsync(partId, newStatus)).Returns(Task.CompletedTask);
 
-//         await _movimentService.UpdatePartStatusAsync(partId, newStatus);
+        var partRepo = new Mock<IPartRepository>();
+        var stationRepo = new Mock<IStationRepository>();
+        var movimentRepo = new Mock<IMovimentRepository>();
 
-//         _mockRepo.Verify(r => r.UpdatePartStatusAsync(partId, newStatus), Times.Once);
-//     }
-// }
+        partRepo.Setup(r => r.GetByIdAsync(part.Id)).ReturnsAsync(part);
+        stationRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(atualStation);
+        stationRepo.Setup(r => r.GetByIdAsync(3)).ReturnsAsync(wrongStation);
+
+        var service = new MovimentService(partRepo.Object, stationRepo.Object, movimentRepo.Object);
+
+        var dto = new MovimentCreateDto
+        {
+            PartId = 1,
+            DestinationStationId = 3,
+            Responsable = "Ni"
+        };
+
+        // Act
+        var result = await service.CriarMovimentacaoAsync(dto);
+
+        // Assert
+        Assert.False(result.ok);
+        Assert.Contains("pular ou retrocede", result.error);
+
+    }
+}

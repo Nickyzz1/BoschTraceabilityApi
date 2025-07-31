@@ -1,52 +1,63 @@
-// using Xunit;
-// using Moq;
-// using System.Threading.Tasks;
-// using System.Collections.Generic;
-// using MyApi.Entities;
-// using MyApi.Repositories;
-// using MyApi.Services;
-// using MyApi.Interfaces;
+using Xunit;
+using Moq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using MyApi.Entities;
+using MyApi.Repositories;
+using MyApi.Services;
+using MyApi.Interfaces;
+using MyApi.DTO;
 
-// public class StationServiceTests
-// {
-//     private readonly StationService _stationService;
-//     private readonly Mock<IStationRepository> _mockRepo;
+public class StationServiceTests
+{
+// Validação da ordem das estações
+    [Fact]
+    public async Task ValidarECriarAsync_SortDuplicado_DeveRetornarErro() {
+        // Arrange
+        var mockRepo = new Mock<IStationRepository>();
+        mockRepo.Setup(r => r.ExistsByTitleAsync(It.IsAny<string>())).ReturnsAsync(false);
+        mockRepo.Setup(r => r.ExistsBySortAsync(2)).ReturnsAsync(true); // ordem já existe
 
-//     public StationServiceTests()
-//     {
-//         _mockRepo = new Mock<IStationRepository>();
-//         _stationService = new StationService(_mockRepo.Object);
-//     }
+        var service = new StationService(mockRepo.Object);
 
-//     [Fact]
-//     public async Task ValidateStationOrder_ValidOrder_ReturnsTrue()
-//     {
-//         var station1 = new Station {Id = 1,
-//         Title = "Estação 1",
-//         Sort = 1};
-//         var station2 = new Station { Id = 2,
-//         Title = "Estação 2",
-//         Sort = 2};
-//         var stations = new List<Station> { station1, station2 };
+        var novaStation = new StationCreateDto
+        {
+            Title = "Estação Nova",
+            Sort = 2
+        };
 
-//         _mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(stations);
+        // Act
+        var (ok, error) = await service.ValidarECriarAsync(novaStation);
 
-//         var result = await _stationService.ValidateStationOrderAsync();
+        // Assert
+        Assert.False(ok);
+        Assert.Equal("Já existe uma estação com essa ordem.", error);
+    }
 
-//         Assert.True(result);
-//     }
+    // Validação da ordem das estações
+    [Fact]
+    public async Task ValidarECriarAsync_DadosValidos_DeveRetornarSucesso()
+    {
+        // Arrange
+        var mockRepo = new Mock<IStationRepository>();
+        mockRepo.Setup(r => r.ExistsByTitleAsync("Estação A")).ReturnsAsync(false);
+        mockRepo.Setup(r => r.ExistsBySortAsync(1)).ReturnsAsync(false);
+        mockRepo.Setup(r => r.AddAsync(It.IsAny<Station>())).Returns(Task.CompletedTask);
 
-//     [Fact]
-//     public async Task ValidateStationOrder_InvalidOrder_ReturnsFalse()
-//     {
-//         var station1 = new Station { id = 1, Sort = 2, Title = "Estação 1", };
-//         var station2 = new Station { id = 2, Sort = 1, Title = "Estação 2", };
-//         var stations = new List<Station> { station1, station2 };
+        var service = new StationService(mockRepo.Object);
 
-//         _mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(stations);
+        var novaStation = new StationCreateDto
+        {
+            Title = "Estação A",
+            Sort = 1
+        };
 
-//         var result = await _stationService.ValidateStationOrderAsync();
+        // Act
+        var (ok, error) = await service.ValidarECriarAsync(novaStation);
 
-//         Assert.False(result);
-//     }
-// }
+        // Assert
+        Assert.True(ok);
+        Assert.Null(error);
+        mockRepo.Verify(r => r.AddAsync(It.IsAny<Station>()), Times.Once);
+    }
+}
